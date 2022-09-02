@@ -1,0 +1,22 @@
+.header {
+    background-color: rgb(10, 20, 110);
+    color: rgb(255, 255, 255);
+
+    height: 64px;
+
+    font-size: 15px;
+}
+
+.header__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 64px;
+}
+
+.header__currency-rate {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+}
