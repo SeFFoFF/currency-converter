@@ -3,7 +3,6 @@ import { ConverterBlock } from "./ConverterBlock"
 import "../assets/css/main.css"
 
 export const Main = ({ currencyRate }) => {
-
     return (
         <main className="main">
             <div className="container">

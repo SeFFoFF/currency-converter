@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
+import { getNumberWithTwoDecimalPlaces } from "../utils"
 
 export const useCurrencyRate = () => {
-    const [currencyRate, setCurrencyRate] = useState({ usd: 0, eur: 0 })
+    const [currencyRate, setCurrencyRate] = useState({ USD: 0, EUR: 0 })
 
     useEffect(() => {
         const fetchData = async () => {
@@ -9,8 +10,8 @@ export const useCurrencyRate = () => {
             const json = await data.json()
 
             setCurrencyRate({
-                usd: Number(json[0].buy).toFixed(2),
-                eur: Number(json[1].buy).toFixed(2)
+                USD: getNumberWithTwoDecimalPlaces(json[0].buy),
+                EUR: getNumberWithTwoDecimalPlaces(json[1].buy)
             })
         }
 
@@ -18,7 +19,7 @@ export const useCurrencyRate = () => {
     }, [])
 
     return {
-        usd: currencyRate.usd,
-        eur: currencyRate.eur
+        USD: currencyRate.USD,
+        EUR: currencyRate.EUR
     }
 }

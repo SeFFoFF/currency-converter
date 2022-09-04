@@ -1,0 +1,1 @@
+export const getNumberWithTwoDecimalPlaces = (number) => Math.trunc( number * 100 ) / 100
