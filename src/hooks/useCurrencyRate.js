@@ -1,28 +1,17 @@
 import React, { useEffect, useState } from "react"
+import { getNumberWithTwoDecimalPlaces } from "../utils"
 
 export const useCurrencyRate = () => {
-    const [currencyRate, setCurrencyRate] = useState({ usd: 0, eur: 0 })
+    const [currencyRate, setCurrencyRate] = useState({ USD: 0, EUR: 0 })
 
     useEffect(() => {
-        const myHeaders = new Headers()
-        myHeaders.append("apikey", "s62visFsFzeU6D6oIYOgKESFADAHQtsD")
-
-        const requestOptions = {
-            method: "GET",
-            redirect: "follow",
-            headers: myHeaders
-        }
-
         const fetchData = async () => {
-            const usdData = await fetch("https://api.apilayer.com/exchangerates_data/convert?to=UAH&from=USD&amount=1", requestOptions)
-            const usdJson = await usdData.json()
-
-            const eurData = await fetch("https://api.apilayer.com/exchangerates_data/convert?to=UAH&from=EUR&amount=1", requestOptions)
-            const eurJson = await eurData.json()
+            const data = await fetch("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5")
+            const json = await data.json()
 
             setCurrencyRate({
-                usd: usdJson.info.rate.toFixed(2),
-                eur: eurJson.info.rate.toFixed(2)
+                USD: getNumberWithTwoDecimalPlaces(json[0].buy),
+                EUR: getNumberWithTwoDecimalPlaces(json[1].buy)
             })
         }
 
@@ -30,7 +19,7 @@ export const useCurrencyRate = () => {
     }, [])
 
     return {
-        usd: currencyRate.usd,
-        eur: currencyRate.eur
+        USD: currencyRate.USD,
+        EUR: currencyRate.EUR
     }
 }

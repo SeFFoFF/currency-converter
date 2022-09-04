@@ -10,11 +10,11 @@ export const Header = ({ currencyRate }) => {
                     <h1 className="header__logo">Currency Converter</h1>
 
                     {
-                        currencyRate.usd && currencyRate.eur
+                        currencyRate.USD && currencyRate.EUR
                             ?
                             <div className="header__currency-rate">
-                                <span>USD {currencyRate.usd}</span>
-                                <span>EUR {currencyRate.eur}</span>
+                                <span>USD {currencyRate.USD}</span>
+                                <span>EUR {currencyRate.EUR}</span>
                             </div>
                             :
                             <div className="header__currency-rate">

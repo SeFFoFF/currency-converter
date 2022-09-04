@@ -1,4 +1,4 @@
-import { Header } from "./components"
+import { Header, Main } from "./components"
 import { useCurrencyRate } from "./hooks/useCurrencyRate"
 
 export const App = () => {
@@ -7,6 +7,7 @@ export const App = () => {
     return (
         <div className="App">
             <Header currencyRate={currencyRate}/>
+            <Main currencyRate={currencyRate}/>
         </div>
     )
 }
